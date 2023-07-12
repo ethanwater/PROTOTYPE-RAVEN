@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class firstpersonCam : MonoBehaviour
+public class firstPersonCamera : MonoBehaviour
 {
 	public float xSensitivity;
 	public float ySensitivity;

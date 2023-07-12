@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class firstpersoncameraholder : MonoBehaviour
+public class firstPersonCameraHolder : MonoBehaviour
 {
 	public Transform cameraPosition;
   void Update()
