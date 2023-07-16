@@ -5,16 +5,16 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 	public const float staminaMAX = 100;
+	public float stamina;
 
 	[Header("Movement")]
 	public float walkSpeed;
+
 	public float runSpeed;
-	public float stamina;
 	public bool canRun;
 	public bool runningStatus;
 
 	public float groundDrag;
-
 
 	[Header("Ground Check")]
 	public float playerHeight;
@@ -35,7 +35,6 @@ public class PlayerMovement : MonoBehaviour
 		runningStatus = false;
   }
 
-	//Movement System
 	private void PlayerInput() {
 		horizontalInput =  Input.GetAxisRaw("Horizontal");
 		verticalInput = Input.GetAxisRaw("Vertical");
@@ -50,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
 				runningStatus = true;
 			} else { //cancels run if not forward
 				runningStatus = false;
+				stamina -= .1f;
 				rb.AddForce(movementDirection.normalized * walkSpeed * 10f, ForceMode.Force);
 			}
 			if(stamina <= 0f) { //stamina purged
@@ -58,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
 			}
 		} else { //walk
 			runningStatus = false;
+			stamina -= .1f;
 			rb.AddForce(movementDirection.normalized * walkSpeed * 10f, ForceMode.Force);
 		}
 	}
@@ -73,9 +74,9 @@ public class PlayerMovement : MonoBehaviour
 	
 	private void StaminaRegeneration(){
 		if (stamina <= staminaMAX && stamina >= 2f){ //regen normally if not too low
-			stamina += .01f;		
+			stamina += .02f;		
 		} else if(stamina < 2f){ //if stamina depleted, regen is slower by 1/10
-			stamina += .001f;
+			stamina += .01f;
 		} else { //recovered can run and normal walk
 			canRun = true;
 			walkSpeed = 5f;
