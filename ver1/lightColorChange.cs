@@ -24,6 +24,10 @@ public class lightColorChange : MonoBehaviour {
 		//t is clamped between 0 and 1. When t is 0 returns a. When t is 1 returns b.
 	}
 
+	void SetRange(float newRange) {
+		lt.range = newRange;
+	}
+
   void Start() {
   	lt = GetComponent<Light>();
   }
