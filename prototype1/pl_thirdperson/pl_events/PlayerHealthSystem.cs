@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerHealthSystem : MonoBehaviour {
-	private float playerHealthMax = 100f;
+public class playerHealthSystem : MonoBehaviour
+{
+	public float playerHealthMax = 100f;
 	public float playerHealth;
 	public bool aliveStatus;
 	
@@ -15,7 +16,7 @@ public class playerHealthSystem : MonoBehaviour {
 
   private void Start()
   {
-		playerHealth = playerHealthMax;
+		playerHealth = 100f;
     aliveStatus = true;
   }
 
