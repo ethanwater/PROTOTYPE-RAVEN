@@ -23,7 +23,7 @@ public class playerHarm : MonoBehaviour {
 		gameObject.TryGetComponent(out playerHealthSystem health);
 		Collider[] colliderDeathArr = Physics.OverlapSphere(transform.position, harmRange);
 		foreach (Collider collider in colliderDeathArr) {
-			if (collider.TryGetComponent(out fireEntity death)) {
+			if (collider.TryGetComponent(out deathObjectTest death)) {
 				health.playerHealth -= DamageMultiplier(fireBaseDamagePerFrame, health.playerHealth, 1f);
 				death.Kill();
 			}

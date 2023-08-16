@@ -2,39 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerTalk : MonoBehaviour {
-	//float talkRange = 3f;
-	int layerMaskNPC = 1 << 7;
-	int layerMaskItem = 1 << 8;
+public class playerRaycastInteractStatus : MonoBehaviour {
+	int layerMaskInteractable = 1 << 7;
 	const float InteractRange = 3f;
 
 	[Header("Detection Check")]
-	public bool isNPC;
-	public bool isItem;
-	
+	public bool isInteractable;
+	public GameObject lastHitObject;
 
   void FixedUpdate() {
 		RaycastHit hit;
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		if (Physics.Raycast(ray, out hit, InteractRange, layerMaskNPC)) {
-			isInteractableNPC = true;
-			Debug.Log("npc");
+		if (Physics.Raycast(ray, out hit, InteractRange, layerMaskInteractable)) {
+			isInteractable = true;
+			lastHitObject = hit.transform.gameObject;
 		} else {
-			isNPC = false;
+			isInteractable = false;
 		}
-		if (Physics.Raycast(ray, out hit, InteractRange, layerMaskItem)) {
-			isInteractableItem = true;
-			Debug.Log("item");
-		} else {
-			isItem = false;
-		}
-    //if (Input.GetKeyDown(KeyCode.E)){
-  	//	Collider[] colliderArr = Physics.OverlapSphere(transform.position, talkRange);
-		//	foreach (Collider collider in colliderArr){
-		//		if (collider.TryGetComponent(out npcInteractable npcInteract)) {
-		//			
-		//		} 			
-		//	}
-		//}   
   }
 }
