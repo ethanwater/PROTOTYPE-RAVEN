@@ -8,16 +8,17 @@ public class playerRaycastInteractStatus : MonoBehaviour {
 
 	[Header("Detection Check")]
 	public bool isInteractable;
-	public GameObject lastHitObject;
+	public GameObject hitObject;
 
   void FixedUpdate() {
 		RaycastHit hit;
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		if (Physics.Raycast(ray, out hit, InteractRange, layerMaskInteractable)) {
 			isInteractable = true;
-			lastHitObject = hit.transform.gameObject;
+			hitObject = hit.transform.gameObject;
 		} else {
+			hitObject = null;
 			isInteractable = false;
 		}
-  }
+	}
 }

@@ -9,16 +9,14 @@ public class PlayerMovement : MonoBehaviour
 
 	[Header("Movement")]
 	public float walkSpeed;
-
 	public float runSpeed;
 	public bool canRun;
 	public bool runningStatus;
-
-	public float groundDrag;
+	private float groundDrag = 6f;
 
 	[Header("Ground Check")]
-	public float playerHeight;
-	public LayerMask defineGround;
+	private float playerHeight = 2f;
+	private LayerMask defineGround = 1 << 6;
 	public bool grounded;
 
 	public Transform orientation;
